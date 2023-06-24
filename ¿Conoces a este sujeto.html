@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>¿Conoces a este sujeto?</title>
+  <style>
+    body {
+      background-color: black;
+    }
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      cursor: pointer;
+    }
+    .centered img {
+      max-width: 50%; /* Ajusta el tamaño máximo de la imagen */
+      height: auto;
+    }
+    .button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="centered" onclick="goToPage()">
+    <img src="nombre-de-tu-imagen.jpg" alt="Imagen">
+    <h1>¿Conoces a este sujeto?</h1>
+  </div>
+
+  <audio id="myAudio" src="sonido1.mp3" loop></audio>
+  <button onclick="playAudio()">Не оглядывайся</button>
+
+  <a href="contador.html" class="button">нажмите здесь, чтобы повеселиться ;)</a>
+
+  <script>
+    function playAudio() {
+      var audio = document.getElementById("myAudio");
+      audio.play();
+    }
+
+    function goToPage() {
+      window.location.href = "foro.html";
+    }
+  </script>
+</body>
+</html>

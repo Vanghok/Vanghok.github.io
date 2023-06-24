@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Христос скоро придет</title>
+  <style>
+    body {
+      background-color: black;
+    }
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+    }
+    .counter {
+      font-size: 30px;
+      color: red;
+    }
+    .button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="centered">
+    <h1>Христос скоро придет</h1>
+    <div id="counter" class="counter"></div>
+  </div>
+
+  <audio id="myAudio" src="sonido2.mp3" loop></audio>
+  <button onclick="playAudio()">Воспроизвести звук</button>
+
+  <a href="nueva-pagina.html" class="button">нажмите здесь, чтобы повеселиться ;)</a>
+
+  <script>
+    // Función para obtener la diferencia en segundos entre dos fechas
+    function getSecondsDiff(startDate, endDate) {
+      const oneSecond = 1000;
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const diff = Math.abs(end - start);
+      return Math.floor(diff / oneSecond);
+    }
+
+    // Función para actualizar el contador
+    function updateCounter() {
+      const now = new Date();
+      const targetDate = new Date('2026-01-01');
+      const secondsRemaining = getSecondsDiff(now, targetDate);
+
+      const counterElement = document.getElementById('counter');
+      const years = Math.floor(secondsRemaining / (365 * 24 * 60 * 60));
+      const days = Math.floor((secondsRemaining % (365 * 24 * 60 * 60)) / (24 * 60 * 60));
+      const hours = Math.floor((secondsRemaining % (24 * 60 * 60)) / (60 * 60));
+      const minutes = Math.floor((secondsRemaining % (60 * 60)) / 60);
+      const seconds = secondsRemaining % 60;
+
+      counterElement.innerHTML = `${years} годы, ${days} дни, ${hours} часы, ${minutes} минуты, ${seconds} секунды до 2026 года`;
+    }
+
+    // Reproducir el audio al hacer clic en el botón
+    function playAudio() {
+      var audio = document.getElementById("myAudio");
+      audio.play();
+    }
+
+    // Actualizar el contador inicial
+    updateCounter();
+
+    // Actualizar el contador cada segundo
+    setInterval(updateCounter, 1000);
+  </script>
+</body>
+</html>
